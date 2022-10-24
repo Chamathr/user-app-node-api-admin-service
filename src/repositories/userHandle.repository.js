@@ -47,7 +47,7 @@ const approveUser = async (userEmail, userData) => {
                     email: userEmail
                 },
                 data: {
-                    status: userData?.status
+                    user_status: userData?.status
                 }
             })
             responseBody = {
