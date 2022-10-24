@@ -15,7 +15,7 @@ const authenticateToken = async (req, res, next) => {
                 }
                 res.status(401).send(responseBody)
             } else {
-                if(decoded?.email === req?.params?.email){
+                if(decoded?.email === req?.params?.email && decoded?.role === 'ADMIN'){
                     next();
                 }
                 else{
