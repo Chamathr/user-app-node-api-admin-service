@@ -30,4 +30,14 @@ const deleteUser = async (userEmail) => {
     }
 }
 
-module.exports = { getAllUsers, approveUser, deleteUser }
+const permanentDeleteUser = async (userEmail) => {
+    try{
+        const response = await UserRepository.permanentDeleteUser(userEmail)
+        return response
+    }
+    catch(error){
+        return error
+    }
+}
+
+module.exports = { getAllUsers, approveUser, deleteUser, permanentDeleteUser }
