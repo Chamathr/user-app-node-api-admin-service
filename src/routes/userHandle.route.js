@@ -9,6 +9,6 @@ router.get('/', UserController.getAllUsers);
 
 router.put('/approve-user/:email', [celebrate(user.userValidation.approveUser)], [authMiddleware.authenticateToken], UserController.approveUser);
 
-// router.delete('/:email', [celebrate(user.userValidation.deleteUser)], [authMiddleware.authenticateToken], UserController.deleteUser)
+router.put('/delete-user/:email', [celebrate(user.userValidation.deleteUser)], [authMiddleware.authenticateToken], UserController.deleteUser)
 
 module.exports = router;

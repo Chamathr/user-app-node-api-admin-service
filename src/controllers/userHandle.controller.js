@@ -30,4 +30,19 @@ const approveUser = async (req, res, next) => {
     }
 }
 
-module.exports = { getAllUsers, approveUser }
+const deleteUser = async (req, res, next) => {
+    try {
+        const response = await UserServices.deleteUser(req?.params?.email)
+        res.status(response?.status).send(response)
+    }
+    catch (error) {
+        const errorBody = {
+            status: 500,
+            message: 'failed',
+            body: error
+        }
+        res.status(500).send(errorBody)
+    }
+}
+
+module.exports = { getAllUsers, approveUser, deleteUser }

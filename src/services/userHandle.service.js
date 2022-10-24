@@ -20,4 +20,14 @@ const approveUser = async (userEmail, userData) => {
     }
 }
 
-module.exports = { getAllUsers, approveUser }
+const deleteUser = async (userEmail) => {
+    try{
+        const response = await UserRepository.deleteUser(userEmail)
+        return response
+    }
+    catch(error){
+        return error
+    }
+}
+
+module.exports = { getAllUsers, approveUser, deleteUser }

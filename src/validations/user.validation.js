@@ -9,6 +9,12 @@ const userValidation = {
         [Segments.BODY]: Joi.object().keys({
             status: Joi.string().required()
         })
+    },
+
+    deleteUser: {
+        [Segments.PARAMS]: {
+            email: Joi.string().email().required()
+        }
     }
 }
 
