@@ -10,9 +10,9 @@ const getAllUsers = async () => {
     }
 }
 
-const createUser = async (userData) => {
+const approveUser = async (userEmail, userData) => {
     try{
-        const response = await UserRepository.createUser(userData)
+        const response = await UserRepository.approveUser(userEmail, userData)
         return response
     }
     catch(error){
@@ -20,34 +20,4 @@ const createUser = async (userData) => {
     }
 }
 
-const deleteUser = async (userEmail) => {
-    try{
-        const response = await UserRepository.deleteUser(userEmail)
-        return response
-    }
-    catch(error){
-        return error
-    }
-}
-
-const updateUser = async (userEmail, userData) => {
-    try{
-        const response = await UserRepository.updateUser(userEmail, userData)
-        return response
-    }
-    catch(error){
-        return error
-    }
-}
-
-const signinUser = async (userData) => {
-    try{
-        const response = await UserRepository.signinUser(userData)
-        return response
-    }
-    catch(error){
-        return error
-    }
-}
-
-module.exports = { getAllUsers, createUser, deleteUser, updateUser, signinUser }
+module.exports = { getAllUsers, approveUser }
