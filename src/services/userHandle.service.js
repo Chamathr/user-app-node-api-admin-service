@@ -1,12 +1,26 @@
-const UserRepository = require('../repositories/userHandle.repository')
+const axios = require('axios')
+const UserServiceConfig = require('../config/userService.config')
+
+const userServiceBaseUrl = UserServiceConfig?.USER_SERVICE_BASE_URL
+const userServicePrefix = UserServiceConfig?.USER_SERVICE_PREFIX
 
 const getAllUsers = async () => {
     try{
-        const response = await UserRepository.getAllUsers()
-        return response
+        const response = await axios.get(`${userServiceBaseUrl}/${userServicePrefix}/users`)
+        const responseBody = {
+            status: 200,
+            message: 'success',
+            body: response?.data?.body
+        }
+        return responseBody
     }
     catch(error){
-        return error
+        const errorBody = {
+            status: 500,
+            message: 'failed',
+            body: error
+        }
+        return errorBody
     }
 }
 

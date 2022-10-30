@@ -4,29 +4,6 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const authConfig = require('../config/auth.config')
 
-const getAllUsers = async () => {
-    try {
-        const response = await prisma.user.findMany()
-        const responseBody = {
-            status: 200,
-            message: 'success',
-            body: response
-        }
-        return responseBody
-    }
-    catch (error) {
-        const errorBody = {
-            status: 500,
-            message: 'failed',
-            body: error
-        }
-        return errorBody
-    }
-    finally {
-        await prisma.$disconnect()
-    }
-}
-
 const approveUser = async (userEmail, userData) => {
     try {
         let responseBody = null
