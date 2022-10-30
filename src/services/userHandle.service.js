@@ -6,7 +6,7 @@ const userServicePrefix = UserServiceConfig?.USER_SERVICE_PREFIX
 
 const getAllUsers = async () => {
     try{
-        const response = await axios.get(`${userServiceBaseUrl}/${userServicePrefix}/users`)
+        const response = await axios.get(`${userServiceBaseUrl}/${userServicePrefix}/admin/users`)
         const responseBody = {
             status: 200,
             message: 'success',
