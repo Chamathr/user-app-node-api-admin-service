@@ -9,7 +9,7 @@ router.get('/', UserController.getAllUsers);
 
 router.put('/approve-user/:email', [celebrate(user.userValidation.approveUser)], [authMiddleware.authenticateToken], UserController.approveUser);
 
-router.delete('/delete-user/:email', [celebrate(user.userValidation.deleteUser)], [authMiddleware.authenticateToken], UserController.deleteUser)
+router.put('/delete-user/:email', [celebrate(user.userValidation.deleteUser)], [authMiddleware.authenticateToken], UserController.deleteUser)
 
 router.delete('/permanent-delete-user/:email', [celebrate(user.userValidation.deleteUser)], [authMiddleware.authenticateToken], UserController.permanentDeleteUser)
 
