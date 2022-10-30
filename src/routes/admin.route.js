@@ -7,6 +7,6 @@ const authMiddleware = require('../midlewares/auth.middleware')
 
 router.get('/', UserController.getAllUsers);
 
-router.put('/approve-user/:email', [celebrate(user.userValidation.approveUser)], UserController.approveUser);
+router.put('/approve-user/:email', [celebrate(user.userValidation.updateUser)], UserController.updateUser);
 
 module.exports = router;

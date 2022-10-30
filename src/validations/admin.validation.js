@@ -2,7 +2,7 @@ const { Joi, Segments } = require('celebrate');
 
 const userValidation = {
 
-    approveUser: {
+    updateUser: {
         [Segments.PARAMS]: {
             email: Joi.string().email().required()
         },

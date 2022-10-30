@@ -4,7 +4,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const authConfig = require('../config/auth.config')
 
-const approveUser = async (userEmail, userData) => {
+const updateUser = async (userEmail, userData) => {
     try {
         let responseBody = null
         const userExists = await prisma.user.findUnique({
@@ -133,4 +133,4 @@ const permanentDeleteUser = async (userEmail) => {
     }
 }
 
-module.exports = { getAllUsers, approveUser, deleteUser, permanentDeleteUser }
+module.exports = { getAllUsers, updateUser, deleteUser, permanentDeleteUser }

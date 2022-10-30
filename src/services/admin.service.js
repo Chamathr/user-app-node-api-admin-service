@@ -10,9 +10,9 @@ const getAllUsers = async () => {
     }
 }
 
-const approveUser = async (userEmail, userData) => {
+const updateUser = async (userEmail, userData) => {
     try{
-        const response = await UserRepository.approveUser(userEmail, userData)
+        const response = await UserRepository.updateUser(userEmail, userData)
         return response
     }
     catch(error){
@@ -20,4 +20,4 @@ const approveUser = async (userEmail, userData) => {
     }
 }
 
-module.exports = { getAllUsers, approveUser }
+module.exports = { getAllUsers, updateUser }

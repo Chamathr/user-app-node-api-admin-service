@@ -15,9 +15,9 @@ const getAllUsers = async (req, res, next) => {
     }
 }
 
-const approveUser = async (req, res, next) => {
+const updateUser = async (req, res, next) => {
     try {
-        const response = await UserServices.approveUser(req?.params?.email, req?.body)
+        const response = await UserServices.updateUser(req?.params?.email, req?.body)
         res.status(response?.status).send(response)
     }
     catch (error) {
@@ -60,4 +60,4 @@ const permanentDeleteUser = async (req, res, next) => {
     }
 }
 
-module.exports = { getAllUsers, approveUser, deleteUser, permanentDeleteUser }
+module.exports = { getAllUsers, updateUser, deleteUser, permanentDeleteUser }

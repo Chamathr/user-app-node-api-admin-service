@@ -5,9 +5,9 @@ const { celebrate } = require('celebrate');
 const user = require('../validations/user.validation')
 const authMiddleware = require('../midlewares/auth.middleware')
 
-router.get('/', UserController.getAllUsers);
+router.get('/users', UserController.getAllUsers);
 
-router.put('/approve-user/:email', [celebrate(user.userValidation.approveUser)], [authMiddleware.authenticateToken], UserController.approveUser);
+router.put('/update-user/:email', [celebrate(user.userValidation.updateUser)], [authMiddleware.authenticateToken], UserController.updateUser);
 
 router.delete('/delete-user/:email', [celebrate(user.userValidation.deleteUser)], [authMiddleware.authenticateToken], UserController.deleteUser)
 

@@ -27,7 +27,7 @@ const getAllUsers = async () => {
     }
 }
 
-const approveUser = async (userEmail, userData) => {
+const updateUser = async (userEmail, userData) => {
     try {
         let responseBody = null
         const userExists = await prisma.user.findUnique({
@@ -71,4 +71,4 @@ const approveUser = async (userEmail, userData) => {
     }
 }
 
-module.exports = { getAllUsers, approveUser }
+module.exports = { getAllUsers, updateUser }

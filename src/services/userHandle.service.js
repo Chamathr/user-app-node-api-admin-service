@@ -5,7 +5,7 @@ const userServiceBaseUrl = UserServiceConfig?.USER_SERVICE_BASE_URL
 const userServicePrefix = UserServiceConfig?.USER_SERVICE_PREFIX
 
 const getAllUsers = async () => {
-    try{
+    try {
         const response = await axios.get(`${userServiceBaseUrl}/${userServicePrefix}/admin/users`)
         const responseBody = {
             status: 200,
@@ -14,7 +14,7 @@ const getAllUsers = async () => {
         }
         return responseBody
     }
-    catch(error){
+    catch (error) {
         const errorBody = {
             status: 500,
             message: 'failed',
@@ -24,34 +24,44 @@ const getAllUsers = async () => {
     }
 }
 
-const approveUser = async (userEmail, userData) => {
-    try{
-        const response = await UserRepository.approveUser(userEmail, userData)
-        return response
+const updateUser = async (userEmail, userData) => {
+    try {
+        const response = await axios.put(`${userServiceBaseUrl}/${userServicePrefix}/admin/update-user/${userEmail}`, userData)
+        const responseBody = {
+            status: 200,
+            message: 'success',
+            body: response?.data?.body
+        }
+        return responseBody
     }
-    catch(error){
-        return error
+    catch (error) {
+        const errorBody = {
+            status: 500,
+            message: 'failed',
+            body: error
+        }
+        return errorBody
     }
 }
 
 const deleteUser = async (userEmail) => {
-    try{
+    try {
         const response = await UserRepository.deleteUser(userEmail)
         return response
     }
-    catch(error){
+    catch (error) {
         return error
     }
 }
 
 const permanentDeleteUser = async (userEmail) => {
-    try{
+    try {
         const response = await UserRepository.permanentDeleteUser(userEmail)
         return response
     }
-    catch(error){
+    catch (error) {
         return error
     }
 }
 
-module.exports = { getAllUsers, approveUser, deleteUser, permanentDeleteUser }
+module.exports = { getAllUsers, updateUser, deleteUser, permanentDeleteUser }
