@@ -45,9 +45,9 @@ const deleteUser = async (req, res, next) => {
     }
 }
 
-const permanentDeleteUser = async (req, res, next) => {
+const deleteUserPermanent = async (req, res, next) => {
     try {
-        const response = await UserServices.permanentDeleteUser(req?.params?.email)
+        const response = await UserServices.deleteUserPermanent(req?.params?.email)
         res.status(response?.status).send(response)
     }
     catch (error) {
@@ -60,4 +60,4 @@ const permanentDeleteUser = async (req, res, next) => {
     }
 }
 
-module.exports = { getAllUsers, updateUser, deleteUser, permanentDeleteUser }
+module.exports = { getAllUsers, updateUser, deleteUser, deleteUserPermanent }

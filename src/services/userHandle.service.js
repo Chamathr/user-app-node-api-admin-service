@@ -64,14 +64,24 @@ const deleteUser = async (userEmail) => {
     }
 }
 
-const permanentDeleteUser = async (userEmail) => {
+const deleteUserPermanent = async (userEmail) => {
     try {
-        const response = await UserRepository.permanentDeleteUser(userEmail)
-        return response
+        const response = await axios.delete(`${userServiceBaseUrl}/${userServicePrefix}/admin/delete-user-permanent/${userEmail}`)
+        const responseBody = {
+            status: 200,
+            message: 'success',
+            body: response?.data?.body
+        }
+        return responseBody
     }
     catch (error) {
-        return error
+        const errorBody = {
+            status: 500,
+            message: 'failed',
+            body: error
+        }
+        return errorBody
     }
 }
 
-module.exports = { getAllUsers, updateUser, deleteUser, permanentDeleteUser }
+module.exports = { getAllUsers, updateUser, deleteUser, deleteUserPermanent }
