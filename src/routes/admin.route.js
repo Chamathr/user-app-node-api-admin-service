@@ -9,7 +9,7 @@ router.get('/', AdminController.getAllAdmins);
 
 router.post('/signup', [celebrate(admin.adminValidation.signupAdmin)], AdminController.signupAdmin);
 
-router.delete('/:email', [celebrate(admin.adminValidation.deleteAdmin)], [authMiddleware.authenticateToken], AdminController.deleteAdmin)
+router.delete('/delete-admin/:email', [celebrate(admin.adminValidation.deleteAdmin)], [authMiddleware.authenticateToken], AdminController.deleteAdmin)
 
 router.put('/update-admin/:email', [celebrate(admin.adminValidation.updateAdmin)], [authMiddleware.authenticateToken], AdminController.updateAdmin)
 
