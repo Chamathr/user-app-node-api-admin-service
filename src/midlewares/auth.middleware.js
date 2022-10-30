@@ -15,7 +15,7 @@ const authenticateToken = async (req, res, next) => {
                 }
                 res.status(401).send(responseBody)
             } else {
-                if(decoded?.userRole === 'ADMIN' || decoded?.userRole === 'SUPER_ADMIN'){
+                if(decoded?.adminRole === 'ADMIN' || decoded?.adminRole === 'SUPER_ADMIN'){
                     next();
                 }
                 else{
