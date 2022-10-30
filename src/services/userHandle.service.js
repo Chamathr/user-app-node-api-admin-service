@@ -46,11 +46,21 @@ const updateUser = async (userEmail, userData) => {
 
 const deleteUser = async (userEmail) => {
     try {
-        const response = await UserRepository.deleteUser(userEmail)
-        return response
+        const response = await axios.delete(`${userServiceBaseUrl}/${userServicePrefix}/admin/delete-user/${userEmail}`)
+        const responseBody = {
+            status: 200,
+            message: 'success',
+            body: response?.data?.body
+        }
+        return responseBody
     }
     catch (error) {
-        return error
+        const errorBody = {
+            status: 500,
+            message: 'failed',
+            body: error
+        }
+        return errorBody
     }
 }
 
