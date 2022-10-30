@@ -7,24 +7,23 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
+model Admin {
   id     Int         @id @default(autoincrement())
-  email  String      @unique(map: "User_email_key")
+  email  String      @unique(map: "Admin_email_key")
   password String 
   name   String
   age    Int
-  role   User_Role   @default(USER)
-  user_status User_Status @default(PENDING)
+  role   Admin_Role   @default(ADMIN)
+  admin_status Admin_Status @default(PENDING)
   status Status @default(ACTIVE)
 }
 
-enum User_Role {
-  USER
+enum Admin_Role {
   ADMIN
   SUPER_ADMIN
 }
 
-enum User_Status {
+enum Admin_Status {
   PENDING
   APPROVED
   REJECTED

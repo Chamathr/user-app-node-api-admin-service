@@ -1,8 +1,8 @@
-const UserRepository = require('../repositories/admin.repository')
+const AdminRepository = require('../repositories/admin.repository')
 
-const getAllUsers = async () => {
+const getAllAdmins = async () => {
     try{
-        const response = await UserRepository.getAllUsers()
+        const response = await AdminRepository.getAllAdmins()
         return response
     }
     catch(error){
@@ -10,9 +10,9 @@ const getAllUsers = async () => {
     }
 }
 
-const updateUser = async (userEmail, userData) => {
+const signupAdmin = async (adminData) => {
     try{
-        const response = await UserRepository.updateUser(userEmail, userData)
+        const response = await AdminRepository.signupAdmin(adminData)
         return response
     }
     catch(error){
@@ -20,4 +20,34 @@ const updateUser = async (userEmail, userData) => {
     }
 }
 
-module.exports = { getAllUsers, updateUser }
+const deleteAdmin = async (adminEmail) => {
+    try{
+        const response = await AdminRepository.deleteAdmin(adminEmail)
+        return response
+    }
+    catch(error){
+        return error
+    }
+}
+
+const updateAdmin = async (adminEmail, adminData) => {
+    try{
+        const response = await AdminRepository.updateAdmin(adminEmail, adminData)
+        return response
+    }
+    catch(error){
+        return error
+    }
+}
+
+const signinAdmin = async (adminData) => {
+    try{
+        const response = await AdminRepository.signinAdmin(adminData)
+        return response
+    }
+    catch(error){
+        return error
+    }
+}
+
+module.exports = { getAllAdmins, signupAdmin, deleteAdmin, updateAdmin, signinAdmin }

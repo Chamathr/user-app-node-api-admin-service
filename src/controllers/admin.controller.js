@@ -1,8 +1,8 @@
-const UserServices = require('../services/admin.service')
+const AdminService = require('../services/admin.service')
 
-const getAllUsers = async (req, res, next) => {
+const getAllAdmins = async (req, res, next) => {
     try {
-        const response = await UserServices.getAllUsers()
+        const response = await AdminService.getAllAdmins()
         res.status(response?.status).send(response)
     }
     catch (error) {
@@ -15,9 +15,9 @@ const getAllUsers = async (req, res, next) => {
     }
 }
 
-const updateUser = async (req, res, next) => {
+const signupAdmin = async (req, res, next) => {
     try {
-        const response = await UserServices.updateUser(req?.params?.email, req?.body)
+        const response = await AdminService.signupAdmin(req?.body)
         res.status(response?.status).send(response)
     }
     catch (error) {
@@ -30,4 +30,49 @@ const updateUser = async (req, res, next) => {
     }
 }
 
-module.exports = { getAllUsers, updateUser }
+const deleteAdmin = async (req, res, next) => {
+    try {
+        const response = await AdminService.deleteAdmin(req?.params?.email)
+        res.status(response?.status).send(response)
+    }
+    catch (error) {
+        const errorBody = {
+            status: 500,
+            message: 'failed',
+            body: error
+        }
+        res.status(500).send(errorBody)
+    }
+}
+
+const updateAdmin = async (req, res, next) => {
+    try {
+        const response = await AdminService.updateAdmin(req?.params?.email, req?.body)
+        res.status(response?.status).send(response)
+    }
+    catch (error) {
+        const errorBody = {
+            status: 500,
+            message: 'failed',
+            body: error
+        }
+        res.status(500).send(errorBody)
+    }
+}
+
+const signinAdmin = async (req, res, next) => {
+    try {
+        const response = await AdminService.signinAdmin(req?.body)
+        res.status(response?.status).send(response)
+    }
+    catch (error) {
+        const errorBody = {
+            status: 500,
+            message: 'failed',
+            body: error
+        }
+        res.status(500).send(errorBody)
+    }
+}
+
+module.exports = { getAllAdmins, signupAdmin, deleteAdmin, updateAdmin, signinAdmin }
