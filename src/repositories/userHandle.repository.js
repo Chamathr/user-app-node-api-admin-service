@@ -43,9 +43,6 @@ const updateUser = async (userEmail, userData) => {
         }
         return errorBody
     }
-    finally {
-        await prisma.$disconnect()
-    }
 }
 
 const deleteUser = async (userEmail) => {
@@ -87,9 +84,6 @@ const deleteUser = async (userEmail) => {
         }
         return errorBody
     }
-    finally {
-        await prisma.$disconnect()
-    }
 }
 
 const permanentDeleteUser = async (userEmail) => {
@@ -127,9 +121,6 @@ const permanentDeleteUser = async (userEmail) => {
             body: error
         }
         return errorBody
-    }
-    finally {
-        await prisma.$disconnect()
     }
 }
 

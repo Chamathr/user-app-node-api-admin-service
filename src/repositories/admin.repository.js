@@ -22,9 +22,6 @@ const getAllAdmins = async () => {
         }
         return errorBody
     }
-    finally {
-        await prisma.$disconnect()
-    }
 }
 
 const signupAdmin = async (adminData) => {
@@ -63,9 +60,6 @@ const signupAdmin = async (adminData) => {
             body: error
         }
         return errorBody
-    }
-    finally {
-        await prisma.$disconnect()
     }
 }
 
@@ -106,9 +100,6 @@ const deleteAdmin = async (adminEmail) => {
             body: error
         }
         return errorBody
-    }
-    finally {
-        await prisma.$disconnect()
     }
 }
 
@@ -155,9 +146,6 @@ const updateAdmin = async (adminEmail, adminData) => {
             body: error
         }
         return errorBody
-    }
-    finally {
-        await prisma.$disconnect()
     }
 }
 
@@ -206,9 +194,6 @@ const signinAdmin = async (adminData) => {
             body: error
         }
         return errorBody
-    }
-    finally {
-        await prisma.$disconnect()
     }
 }
 
